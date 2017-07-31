@@ -74,8 +74,7 @@ def main():
     libraries = [['ChEA_2016', 645]]
     dirs = ['up', 'dn']
     gmt_file = 'single_gene_perturbations-v1.0.gmt'
-    engine = create_engine(
-        'mysql+pymysql://coexpression_and_distance:systemsbiology@amp.pharm.mssm.edu/coexpression_and_distance')
+    engine = create_engine()
     connection = engine.connect()
 
     # Create id to gene mapping table and keep it in memory
