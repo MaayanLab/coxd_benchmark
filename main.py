@@ -118,7 +118,8 @@ def main():
                         results.append(res)
 
                     # Sort tfs from result
-                    # 0 - Index, 1 - Term
+                    # 0 - Index
+                    # 1 - Term
                     # 2 - P-value
                     # 3 - Z-score
                     # 4 - Combined score
