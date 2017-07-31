@@ -1,6 +1,0 @@
-*.DS_Store
-__pycache__/
-.idea/
-ChEA_2016.gmt
-single_gene_perturbations-v1.0.gmt
-.gitignore
