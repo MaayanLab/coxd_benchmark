@@ -105,9 +105,7 @@ def main():
                             overlap = res[5]
                             coex_dist = [float(i) for i in get_coex_dist(overlap, engine, id_gene).split('\t')]
                             res.extend(coex_dist)
-                            res_pos = len(results[tf])
-                            results[tf][res_pos].append(res)
-                            print()
+                            results[tf][desc].append(res)
 
                         # Sort tfs from result
                         # 0 - Index
@@ -123,8 +121,8 @@ def main():
                         # 10 - Distance
                         status = [start_pos + pos + 1, results]
                         pickle.dump(status, open('%s_%s_pval.05.pickle' % (chea, direction), 'wb'))
-        connection.close()
-        engine.dispose()
+    connection.close()
+    engine.dispose()
     return None
 
 
