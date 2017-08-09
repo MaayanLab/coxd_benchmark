@@ -79,8 +79,8 @@ def main():
         creeds = parse_gmt(open(gmt_file, 'r').readlines(), direction)
         creeds = filter_library(creeds, lib_file)
 
-        if os.path.isfile('%s_%s_pval.05.pickle' % (chea, direction)):
-            jar = pickle.load(open('%s_%s_pval.05.pickle' % (chea, direction), 'rb'))
+        if os.path.isfile('%s_%s_pval.05_full.pickle' % (chea, direction)):
+            jar = pickle.load(open('%s_%s_pval_full.05.pickle' % (chea, direction), 'rb'))
             start_pos, results = jar
         else:
             start_pos = 0
@@ -97,8 +97,10 @@ def main():
                     # Filter results by p-value and tf
                     data = sorted([i for i in get_enrichr_results(chea, '\n'.join(genes), '')[chea] if (i[2] <= 0.05)],
                                   key=itemgetter(2))
-                    data = [j for j in [[i] + line[1:] for i, line in enumerate(data)] if
-                            j[1].split('_')[0].upper() == tf]
+
+                    # Disable for 'full'
+                    # data = [j for j in [[i] + line[1:] for i, line in enumerate(data)] if
+                    #         j[1].split('_')[0].upper() == tf]
 
                     if data:
                         for res in data:
@@ -120,7 +122,7 @@ def main():
                         # 9 - Coexpression
                         # 10 - Distance
                         status = [start_pos + pos + 1, results]
-                        pickle.dump(status, open('%s_%s_pval.05.pickle' % (chea, direction), 'wb'))
+                        pickle.dump(status, open('%s_%s_pval.05_full.pickle' % (chea, direction), 'wb'))
     connection.close()
     engine.dispose()
     return None
