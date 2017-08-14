@@ -3,3 +3,5 @@ __pycache__/
 .idea/
 ChEA_2016.gmt
 single_gene_perturbations-v1.0.gmt
+ChEA_2016_dn_pval.05_full.pickle
+ChEA_2016_up_pval.05_full.pickle

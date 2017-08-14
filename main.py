@@ -80,7 +80,7 @@ def main():
         creeds = filter_library(creeds, lib_file)
 
         if os.path.isfile('%s_%s_pval.05_full.pickle' % (chea, direction)):
-            jar = pickle.load(open('%s_%s_pval_full.05.pickle' % (chea, direction), 'rb'))
+            jar = pickle.load(open('%s_%s_pval.05_full.pickle' % (chea, direction), 'rb'))
             start_pos, results = jar
         else:
             start_pos = 0
@@ -94,11 +94,11 @@ def main():
                     if not genes:
                         continue
 
-                    # Filter results by p-value and tf
-                    data = sorted([i for i in get_enrichr_results(chea, '\n'.join(genes), '')[chea] if (i[2] <= 0.05)],
-                                  key=itemgetter(2))
+                    data = sorted([i for i in get_enrichr_results(chea, '\n'.join(genes), '')[chea]], key=itemgetter(2))
 
-                    # Disable for 'full'
+                    # Filter results by p-value and tf
+                    # data = sorted([i for i in get_enrichr_results(chea, '\n'.join(genes), '')[chea] if (i[2] <= 0.05)],
+                    #               key=itemgetter(2))
                     # data = [j for j in [[i] + line[1:] for i, line in enumerate(data)] if
                     #         j[1].split('_')[0].upper() == tf]
 
